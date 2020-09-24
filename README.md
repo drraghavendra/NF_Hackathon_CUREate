@@ -40,7 +40,7 @@
 
 *The Docker image contains <R/jupyter> notebooks of all analyses and the dependencies to run them. *Be sure to note if you need any special credentials to access data for these analyses, **don't package restricted data** in your containers!*
 
-Instructions for running the following notebooks: *be sure to adjust these instructions as necessary! check out https://github.com/Sage-Bionetworks/nf-hackathon-2019 for example containers and instructions*
+Instructions for running the following notebooks: *be sure to adjust these instructions as necessary! check out https://github.com/Sage-Bionetworks/nfhackathon2020/ for example containers and instructions*
 
 1. `docker pull <your dockerhub repo>/<this container>` command to pull the image from the DockerHub
 2. `docker run <your dockerhub repo>/<this container>` Run the docker image from the master shell script
