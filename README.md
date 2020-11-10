@@ -1,3 +1,6 @@
+# NOTE: Fork this repository to your own account to use/edit this template
+
+
 # GoodDocData -- A Template for Simple and Clear Documentation of Hackathon Analyses!
 
 *adapted from [NCBI-Hackathons/GoodDoc](https://github.com/NCBI-Hackathons/GoodDoc) with some tweaks for analysis-driven projects*
