@@ -59,7 +59,7 @@ Note that in order to fully reproduce the results, the commputation environment 
 **Troubleshooting:** If the docker containers aren't running, please consider to increase the memory of the docker service by following the suggestions [here](https://stackoverflow.com/questions/32834082/how-to-increase-docker-machine-memory-mac). And you can rebuild an individual docker using the corresponding `Dockerfile` for debugging.
 
 ### Data folder 
-Our primary data sources include **Elsevier literature** provided by _synapse_, **PMC literature** scraped by the `biopython` package, **NF general information** scraped from the Children Foundation website and **Clinvar** data exported from its website. Note that all the data should be unzipped and properly cleaned to be consumable for the following data science work. To get access the cleaned dataset, please contact the authors by submitting an issue on Github. 
+Our primary data sources include **Elsevier literature** provided by _synapse_, **PMC literature** scraped by the `biopython` package, **NF general information** scraped from the Children Foundation website and **Clinvar** data exported from its website. Note that all the data should be unzipped and properly cleaned to be consumable for the following data science work. To get access to the cleaned dataset, please contact the authors by submitting an issue on Github. 
 
 ## References:
 1. Wilkinson et al. The FAIR Guiding Principles for scientific data management and stewardship. Sci Data. 2016 Mar 15;3:160018. doi: 10.1038/sdata.2016.18. Erratum in: Sci Data. 2019 Mar 19;6(1):6. PMID: 26978244; PMCID: PMC4792175.
