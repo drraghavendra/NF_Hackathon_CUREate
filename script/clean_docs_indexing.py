@@ -14,14 +14,13 @@ from haystack.utils import print_answers
 from haystack.document_store.elasticsearch import ElasticsearchDocumentStore
 from haystack.retriever.sparse import ElasticsearchRetriever
 
-document_store = ElasticsearchDocumentStore(host="localhost", username="", password="", index="document")
-#document_store.delete_all_documents(index = 'document')
+DB_HOST = os.getenv("DB_HOST", "localhost")
+document_store = ElasticsearchDocumentStore(host=DB_HOST, username="", password="", index="document")
+document_store.delete_all_documents(index = 'document')
 
 # Elesier dataset with full text
-all_doc_files = glob.glob('../data/HACKXML0000000004/**/*.xml', recursive=True)[1:]
-
 def nf2020toDict():
-    paths = "../data/HACKXML0000000004/**/*.xml"
+    paths = "./data/HACKXML0000000004/**/*.xml"
     target_tags = ['simple-para', 'para']
 
     docs = []
@@ -47,9 +46,9 @@ document_store.write_documents(nf_docs)
 
 
 # Elesier dataset only with abstract
-ctf_hackathon_doc = pd.read_json('../data/ctf-hackathon-upload.json', lines=True)
+ctf_hackathon_doc = pd.read_json('./data/ctf-hackathon-upload.json', lines=True)
 
-with open('../data/HACKXML0000000004/dataset.xml', 'r') as f: 
+with open('./data/HACKXML0000000004/dataset.xml', 'r') as f: 
     papers_info = f.read() 
 papers_info_data = BeautifulSoup(papers_info, "xml") 
 paper_xml_doi_ls = np.unique([t.getText() for t in papers_info_data.find_all('doi')])
@@ -72,7 +71,7 @@ document_store.write_documents(other_nfpaper_docs_dicts)
 
 
 # Compiled informatics PDF docs from the NF Registry website
-pdf_dicts = convert_files_to_dicts(dir_path='../data/nf_info_pdfs/', split_paragraphs=True)
+pdf_dicts = convert_files_to_dicts(dir_path='./data/nf_info_pdfs/', split_paragraphs=True)
 for p in pdf_dicts:
     p['text'] = re.sub(r'For more information on.*', '', ' '.join(p['text'].split('\n')))
 pdf_docs = [p for p in pdf_dicts if not p['text'].startswith('Help end NF by joining the confidential NF Registry') and len(p['text'])>50]
@@ -82,7 +81,7 @@ document_store.write_documents(pdf_docs)
 
 
 # PMC Articles
-pmc_papers = pd.read_csv("../data/pmc_papers.csv")
+pmc_papers = pd.read_csv("./data/pmc_papers.csv")
 pmc_papers['authors'] = pmc_papers['authors'].map(lambda x: ', '.join(x.split(','))+' et al' if isinstance(x, str) and len(x.split(','))>3 else x)
 
 pmc_papers_docs_dicts = []
