@@ -1,0 +1,25 @@
+FROM ideonate/streamlit-single
+# overwrite the entrypoint
+ENTRYPOINT []
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y curl
+
+# install as a package
+COPY app_requirements.txt /app
+RUN pip install -r app_requirements.txt
+
+# Copy APP code
+COPY script /app
+
+# optional: copy data directory containing docs for ingestion
+COPY data/nf_mutation_info.csv /app/data/nf_mutation_info.csv
+
+EXPOSE 8501
+
+# streamlit-specific commands for config
+ENV LC_ALL=C.UTF-8
+ENV LANG=C.UTF-8
+
+# Run Streamlit automatically when container is run
+CMD streamlit run ./nfke_app.py

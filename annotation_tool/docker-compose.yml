@@ -1,0 +1,41 @@
+version: "3"
+services:
+  backend:
+    image: deepset/haystack-annotation:latest
+    container_name: haystack-annotation
+    environment:
+      DEFAULT_ADMIN_EMAIL: "jpzhangv@gmail.com"
+      DEFAULT_ADMIN_PASSWORD: "DEMO_PASSWORD"
+      NODE_ENV: "production"
+      PROD_DB_HOSTNAME: "db"
+      PROD_DB_NAME: "nfknowledge"
+      PROD_DB_USERNAME: "jpzhang"
+      PROD_DB_PASSWORD: "nfhackathon"
+    ports:
+      - "7001:7001"
+    links:
+      - "db:database"
+    depends_on:
+      - db
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  db:
+    image: "postgres:12"
+    container_name: "postgres"
+    environment:
+      POSTGRES_USER: "jpzhang"
+      POSTGRES_PASSWORD: "nfhackathon"
+      POSTGRES_DB: "nfknowledge"
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres-data:/var/lib/psql/data
+    networks:
+      - app-network
+    restart: unless-stopped
+
+networks:
+  app-network:
+    driver: bridge

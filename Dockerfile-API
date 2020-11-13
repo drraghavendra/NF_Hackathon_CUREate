@@ -1,0 +1,24 @@
+FROM python:3.7.4-stretch
+
+WORKDIR /home/user
+
+RUN apt-get update && apt-get install -y curl git pkg-config cmake
+
+# optional: install as a package
+COPY api_requirements.txt /home/user/
+RUN pip install -r api_requirements.txt
+
+# copy saved models
+#COPY models* /home/user/models/
+
+# Copy REST API code
+COPY rest_api /home/user/rest_api
+
+# optional: copy data directory containing docs for ingestion
+#COPY data /home/user/data
+
+EXPOSE 8000
+EXPOSE 9200
+
+# cmd for running the API
+CMD ["gunicorn", "rest_api.application:app",  "-b", "0.0.0.0", "-k", "uvicorn.workers.UvicornWorker", "--workers", "1", "--timeout", "180", "--preload"]
