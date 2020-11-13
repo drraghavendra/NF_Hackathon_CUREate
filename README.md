@@ -3,7 +3,7 @@
 NF Hackathon project 2020 
 [Project Overview](https://nfhack-platform.bemyapp.com/#/projects/5f7fd37aed4283001b7bcd66aea32de67cd3ec908f71ce35e94b667748f45006!)
 
-Our goal is to facilitate knowledge discovery by building an interactive tool where people can quickly explore literature data about NF and find answers effectively and accurately. We are interested in applying various NLP and data science techniques, such as question answering, topic mining, trend analysis and network analysis.
+The objective and goal of our project is to facilitate knowledge discovery by building an interactive tool where people can quickly explore literature data about NF and find answers effectively and accurately. We are interested in applying various NLP and data science techniques, such as question answering, topic mining, trend analysis and network analysis.
 
 ## Abstract
 Patients often do not have the literacy nor the ability to access the full corpus of the research literature and to navigate and interpret data coming from various genetic and biomedical resources. Patients, though, know their symptoms very well, as well as their hard journey with NF. There's a need for a centralized user-friendly knowledge base that can collate all the available knowledge on NF, which can help them understand the disease when they are newly diagnosed, and guide them through the development of novel symptoms throughout their life. Most importantly, there’s a need for them to contribute to such a resource, as a community. With the NF Knowledge Explorer we apply state of the art NLP and Q&A models  to find meaningful and accurate answers which will be validated by the community itself, empowering patients with  knowledge. 
